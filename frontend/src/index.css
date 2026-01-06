@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.nav-link {
+  margin-left: 40px;
+}
+
+.footer-link:hover {
+  color: #387ed1 !important;
+}
+
+.social-link i:hover {
+  color: #387ed1 !important;
+}
+.nav-link:hover{
+    color: #387ed1 !important;
+}

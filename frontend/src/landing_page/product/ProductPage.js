@@ -1,26 +1,19 @@
-import React from 'react';
+import React from "react";
 
-import Hero from './Hero';
-import LeftSeciton from './LeftSection';
-import RightSection from './RightSection';
-import Universe from './Universe';
-
-import Navbar from '../Navbar';
-import Footer from '../Footer';
-
+import Hero from "./Hero";
+import LeftSeciton from "./LeftSection";
+import RightSection from "./RightSection";
+import Universe from "./Universe";
 
 function ProductPage() {
-    return (
-        <>
-            <Navbar />
-            <Hero />
-            <LeftSeciton />
-            <RightSection />
-            <Universe />
-            <Footer />
-        </>
-
-    );
+  return (
+    <>
+      <Hero />
+      <LeftSeciton />
+      <RightSection />
+      <Universe />
+    </>
+  );
 }
 
 export default ProductPage;

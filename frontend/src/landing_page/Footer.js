@@ -17,7 +17,7 @@ function Footer() {
                             All rights reserved.
                         </p>
 
-                        <div className="fs-4 d-flex gap-3 text-muted mb-3 social-link">
+                        <div className="fs-4 d-flex gap-3 text-muted social-link">
                             <i className=" fa fa-brands fa-x-twitter"></i>
                             <i className="fa fa-facebook-square" aria-hidden="true"></i>
                             <i className=" fa fa-brands fa-instagram"></i>
@@ -26,7 +26,7 @@ function Footer() {
 
                         <hr className="social-hr" />
 
-                        <div className="fs-4 d-flex gap-3 text-muted mt-3 social-link">
+                        <div className="fs-4 d-flex gap-3 text-muted  social-link">
                             <i class="fa fa-youtube-play" aria-hidden="true"></i>
                             <i class="fa fa-whatsapp" aria-hidden="true"></i>
                             <i class="fa fa-telegram" aria-hidden="true"></i>

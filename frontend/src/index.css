@@ -26,3 +26,80 @@ code {
 .nav-link:hover{
     color: #387ed1 !important;
 }
+#supportHero {
+  background-color: rgb(56, 126, 209);
+  color: white;
+  padding-bottom: 80px;
+}
+
+/* Top bar */
+.supportTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 150px;
+}
+
+.supportTop h4 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.supportTop a {
+  color: white;
+  font-size: 15px;
+  text-decoration: underline;
+}
+
+/* Main content */
+.supportContent {
+  padding: 40px 150px;
+}
+
+.supportContent h1 {
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+/* Search input */
+#supportHero input {
+  width: 100%;
+  padding: 18px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+/* Quick links under input */
+.quickLinks a {
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 14px;
+  color: #eaf1fb;
+  text-decoration: underline;
+}
+
+/* Featured section */
+.supportContent ol {
+  padding-left: 18px;
+}
+
+.supportContent ol li {
+  margin-bottom: 10px;
+}
+
+.supportContent ol a {
+  color: #eaf1fb;
+  font-size: 15px;
+  text-decoration: underline;
+}
+.trcakticketlink{
+  margin-right: 160px;
+}
+  /* .supporPort{
+margin-left: 100px;
+  } */

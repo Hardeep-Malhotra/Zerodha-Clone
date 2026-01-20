@@ -1,19 +1,24 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-
+const bodyParse = require("body-parser");
+const cors = require("cors");
 const { HoldingModel } = require("./model/HoldingModel");
 const { PositionsModel } = require("./model/PositionsModel");
-const app = express();
+
 const PORT = process.env.PORT || 3002;
 const URI = process.env.MONGO_URL;
 
+const app = express();
+app.use(cors());
+app.use(bodyParse.json());
 
 // app.get('/',async(req,res) =>{
 //   res.send("Server are successfully working");
 // })
 
 // app.get("/appholding", async (req, res) => {
+
 //   let tempholding = [
 //     {
 //       name: "BHARTIARTL",
@@ -182,6 +187,18 @@ const URI = process.env.MONGO_URL;
 
 //   res.send("Data Successufllu transfer.....");
 // });
+
+app.get("/allHoldings",async (req , res) =>{
+  let allHoldings = await HoldingModel.find({});
+  res.json(allHoldings);
+});
+app.get("/allPositions",async (req , res) =>{
+  let allPositons = await PositionsModel.find({});
+  res.json(allPositons);
+});
+
+
+
 app.listen(PORT, async () => {
   console.log("App Start");
 

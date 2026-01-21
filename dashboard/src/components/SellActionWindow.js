@@ -2,37 +2,36 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import GeneralContext from "./GeneralContext";
-import "./BuyActionWindow.css";
+import "./BuyActionWindow.css"; // same CSS reuse
 
-const BuyActionWindow = ({ uid }) => {
+const SellActionWindow = ({ uid }) => {
   const ctx = useContext(GeneralContext);
 
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(0.0);
 
-  const handleBuyClick = async () => {
+  const handleSellClick = async () => {
     try {
       await axios.post("http://localhost:3002/newOrder", {
         name: uid,
         qty: Number(stockQuantity),
         price: Number(stockPrice),
-        mode: "BUY",
+        mode: "SELL", // 🔥 change
       });
 
-      ctx.closeBuyWindow(); // ✅ window close
+      ctx.closeSellWindow();
     } catch (err) {
-      console.error("Order failed:", err);
+      console.error("Sell failed:", err);
     }
   };
 
   const handleCancelClick = () => {
-    ctx.closeBuyWindow();
+    ctx.closeSellWindow();
   };
 
   return (
     <div className="container" id="buy-window" draggable="true">
-      {/* ❌ close icon */}
-      <span className="close" onClick={ctx.closeBuyWindow}>×</span>
+      <span className="close" onClick={ctx.closeSellWindow}>×</span>
 
       <div className="regular-order">
         <div className="inputs">
@@ -40,8 +39,6 @@ const BuyActionWindow = ({ uid }) => {
             <legend>Qty.</legend>
             <input
               type="number"
-              name="qty"
-              id="qty"
               value={stockQuantity}
               onChange={(e) => setStockQuantity(e.target.value)}
             />
@@ -51,8 +48,6 @@ const BuyActionWindow = ({ uid }) => {
             <legend>Price</legend>
             <input
               type="number"
-              name="price"
-              id="price"
               step="0.05"
               value={stockPrice}
               onChange={(e) => setStockPrice(e.target.value)}
@@ -64,8 +59,8 @@ const BuyActionWindow = ({ uid }) => {
       <div className="buttons">
         <span>Margin required ₹140.65</span>
         <div>
-          <Link className="btn btn-blue" onClick={handleBuyClick}>
-            Buy
+          <Link className="btn btn-red" onClick={handleSellClick}>
+            Sell
           </Link>
           <Link className="btn btn-grey" onClick={handleCancelClick}>
             Cancel
@@ -76,4 +71,4 @@ const BuyActionWindow = ({ uid }) => {
   );
 };
 
-export default BuyActionWindow;
+export default SellActionWindow;

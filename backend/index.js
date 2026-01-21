@@ -5,7 +5,7 @@ const bodyParse = require("body-parser");
 const cors = require("cors");
 const { HoldingModel } = require("./model/HoldingModel");
 const { PositionsModel } = require("./model/PositionsModel");
-
+const { OrdersModel } = require("./model/OrdersModels");
 const PORT = process.env.PORT || 3002;
 const URI = process.env.MONGO_URL;
 
@@ -188,16 +188,42 @@ app.use(bodyParse.json());
 //   res.send("Data Successufllu transfer.....");
 // });
 
-app.get("/allHoldings",async (req , res) =>{
-  let allHoldings = await HoldingModel.find({});
-  res.json(allHoldings);
-});
-app.get("/allPositions",async (req , res) =>{
-  let allPositons = await PositionsModel.find({});
-  res.json(allPositons);
+app.get("/allHoldings", async (req, res) => {
+  try {
+    const allHoldings = await HoldingModel.find({});
+    res.status(200).json(allHoldings);
+  } catch (error) {
+    console.log("Error fetching holdings: ", eror);
+    res.status(500).json({ message: "Failed to fetch holdings" });
+  }
 });
 
+app.get("/allPositions", async (req, res) => {
+  try {
+    const allPositons = await PositionsModel.find({});
+    res.status(200).json(allPositons);
+  } catch (error) {
+    console.log("Error fetching  poistions: ", error);
+    res.status(500).json({ message: "Failed to fetch positions" });
+  }
+});
 
+app.post("/newOrder", async (req, res) => {
+  try {
+    let newOrders = new OrdersModel({
+      name: req.body.name,
+      qty: req.body.qty,
+      price: req.body.price,
+      mode: req.body.mode,
+    });
+
+    await newOrders.save();
+    res.status(201).send("Order Successfully Saved");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Failed to save order");
+  }
+});
 
 app.listen(PORT, async () => {
   console.log("App Start");

@@ -26,13 +26,17 @@ const BuyActionWindow = ({ uid }) => {
   };
 
   const handleCancelClick = () => {
+    // ctx.closeBuyWindow();
     ctx.closeBuyWindow();
+    window.location.reload(); // 🔥 refresh holdings
   };
 
   return (
     <div className="container" id="buy-window" draggable="true">
       {/* ❌ close icon */}
-      <span className="close" onClick={ctx.closeBuyWindow}>×</span>
+      <span className="close" onClick={ctx.closeBuyWindow}>
+        ×
+      </span>
 
       <div className="regular-order">
         <div className="inputs">

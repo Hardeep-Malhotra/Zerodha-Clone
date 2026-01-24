@@ -100,6 +100,40 @@ code {
 .trcakticketlink{
   margin-right: 160px;
 }
-  /* .supporPort{
-margin-left: 100px;
-  } */
+
+.signup-container {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.signup-image img {
+  max-width: 90%;
+}
+
+/* Form width control */
+.signup-form {
+  max-width: 380px;
+  margin: auto;
+}
+
+/* Button style */
+.signup-btn {
+  background-color: #387ed1;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.signup-btn:hover {
+  background-color: #2f6cb3;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .signup-image {
+    margin-bottom: 40px;
+  }
+  .signup-form {
+    text-align: center;
+  }
+}

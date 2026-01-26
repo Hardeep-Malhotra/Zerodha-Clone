@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-
 function Signup() {
   const navigate = useNavigate();
 
@@ -22,6 +21,7 @@ function Signup() {
   };
 
   // Handle form submit
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -29,21 +29,23 @@ function Signup() {
       const res = await axios.post(
         "http://localhost:3002/auth/signup",
         formData,
-        { withCredentials: true },
       );
 
       if (res.data.success) {
-        // Redirect to dashboard frontend
+        // ✅ Save session
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("username", res.data.username);
+        localStorage.setItem("email", res.data.email);
+
+        // ✅ Redirect to Dashboard
         window.location.href = "http://localhost:3001";
       } else {
         alert(res.data.message);
       }
     } catch (err) {
-      console.log("Signup Error:", err);
       alert("Signup failed!");
     }
   };
-
   return (
     <div className="container signup-container">
       {/* Heading */}

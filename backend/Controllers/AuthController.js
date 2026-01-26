@@ -1,8 +1,10 @@
-const User = require("../model/UserModel"); // ✅ FIXED PATH
+const User = require("../model/UserModel");
 const { createSecretToken } = require("../util/SecretToken");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken"); // ✅ ONLY ONCE
 
-module.exports.Signup = async (req, res, next) => {
+// ================= SIGNUP =================
+module.exports.Signup = async (req, res) => {
   try {
     const { email, password, username } = req.body;
 
@@ -13,38 +15,35 @@ module.exports.Signup = async (req, res, next) => {
 
     const user = await User.create({
       email,
-      password, 
+      password,
       username,
     });
 
     const token = createSecretToken(user._id);
 
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
-
     res.status(201).json({
       message: "User signed up successfully",
       success: true,
-      user,
+      token,
+      username: user.username,
+      email: user.email,
     });
-
-    next();
   } catch (error) {
     console.log(error);
+    res.status(500).json({ success: false });
   }
 };
 
+// ================= LOGIN =================
 module.exports.Login = async (req, res) => {
   try {
     const { email, password } = req.body;
+
     if (!email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    const user = await User.findOne({ email }); // ✅ FIXED
-
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json({ message: "Incorrect email or password" });
     }
@@ -56,19 +55,31 @@ module.exports.Login = async (req, res) => {
 
     const token = createSecretToken(user._id);
 
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
-
     res.status(200).json({
       message: "User logged in successfully",
       success: true,
       token,
       username: user.username,
+      email: user.email,
     });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Login failed" });
+  }
+};
+
+// ================= VERIFY TOKEN =================
+module.exports.userVerification = (req, res) => {
+  const token = req.headers.authorization?.split(" ")[1];
+
+  if (!token) {
+    return res.json({ success: false });
+  }
+
+  try {
+    jwt.verify(token, process.env.JWT_SECRET);
+    return res.json({ success: true });
+  } catch (err) {
+    return res.json({ success: false });
   }
 };

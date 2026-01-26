@@ -6,6 +6,10 @@ const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
+  // ✅ Read directly from localStorage
+  const username = localStorage.getItem("username");
+  const email = localStorage.getItem("email");
+
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
     setIsProfileDropdownOpen(false);
@@ -15,12 +19,22 @@ const Menu = () => {
     setIsProfileDropdownOpen((prev) => !prev);
   };
 
+  // ✅ Logout API + redirect
+  const handleLogout = async () => {
+    await fetch("http://localhost:3002/auth/logout", {
+      credentials: "include",
+    });
+
+    localStorage.clear();
+    window.location.href = "http://localhost:3000/login";
+  };
+
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
 
   return (
     <div className="menu-container">
-      <img src="logo.png" style={{ width: "50px" }} />
+      <img src="logo.png" style={{ width: "50px" }} alt="logo" />
 
       <div className="menus">
         <ul>
@@ -65,74 +79,47 @@ const Menu = () => {
           </li>
 
           <li>
-            <Link to="/apps" onClick={() => handleMenuClick(6)}>
-              <p className={selectedMenu === 6 ? activeMenuClass : menuClass}>
+            <Link to="/apps" onClick={() => handleMenuClick(5)}>
+              <p className={selectedMenu === 5 ? activeMenuClass : menuClass}>
                 Apps
               </p>
             </Link>
           </li>
         </ul>
 
-        
-
-        {/* PROFILE */}
+        {/* Profile Icon */}
         <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+          <div className="avatar">
+            {username ? username[0].toUpperCase() : "U"}
+          </div>
+          <p className="username">{username || "USER"}</p>
         </div>
 
-        {/* DROPDOWN */}
+        {/* Dropdown */}
         {isProfileDropdownOpen && (
           <div className="profile-dropdown">
-            {/* HEADER */}
             <div className="profile-header">
-              <strong>Zerodha User</strong>
-              <span>hello@zerodha.com</span>
+              <strong>{username || "Zerodha User"}</strong>
+              <span>{email || "hello@zerodha.com"}</span>
             </div>
 
-            {/* MAIN LINKS */}
             <ul className="dropdown-list">
-              <li>
-                <i className="fa fa-user"></i>
-                <span>My profile / Settings</span>
-              </li>
-              <li>
-                <i className="fa fa-bar-chart"></i>
-                <span>Console</span>
-              </li>
-              <li>
-                <i className="fa fa-circle-o"></i>
-                <span>Coin</span>
-              </li>
-              <li>
-                <i className="fa fa-life-ring"></i>
-                <span>Support</span>
-              </li>
-              <li>
-                <i className="fa fa-user-plus"></i>
-                <span>Invite friends</span>
-              </li>
+              <li><i className="fa fa-user"></i> My profile</li>
+              <li><i className="fa fa-bar-chart"></i> Console</li>
+              <li><i className="fa fa-circle-o"></i> Coin</li>
+              <li><i className="fa fa-life-ring"></i> Support</li>
+              <li><i className="fa fa-user-plus"></i> Invite friends</li>
             </ul>
 
             <hr />
 
-            {/* SECONDARY LINKS */}
             <ul className="dropdown-list">
-              <li>
-                <i className="fa  fa-map"></i>
-                <span>Tour Kite</span>
-              </li>
-              <li>
-                <i className="fa fa-keyboard-o"></i>
-                <span>Keyboard shortcuts</span>
-              </li>
-              <li>
-                <i className="fa fa-question-circle"></i>
-                <span>Help</span>
-              </li>
-              <li className="logout">
-                <i className="fa fa-sign-out"></i>
-                <span>Logout</span>
+              <li><i className="fa fa-map"></i> Tour Kite</li>
+              <li><i className="fa fa-keyboard-o"></i> Shortcuts</li>
+              <li><i className="fa fa-question-circle"></i> Help</li>
+
+              <li className="logout" onClick={handleLogout}>
+                <i className="fa fa-sign-out"></i> Logout
               </li>
             </ul>
           </div>

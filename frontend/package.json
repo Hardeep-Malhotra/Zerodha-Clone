@@ -37,5 +37,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+  "moduleNameMapper": {
+    "^axios$": "<rootDir>/src/mocks/axios.js",
+    "^react-router-dom$": "<rootDir>/src/mocks/react-router-dom.js"
   }
+}
+
 }

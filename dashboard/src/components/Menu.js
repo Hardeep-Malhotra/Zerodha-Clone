@@ -18,10 +18,10 @@ const Menu = () => {
   const handleProfileClick = () => {
     setIsProfileDropdownOpen((prev) => !prev);
   };
-
+// http://localhost:3002/auth/logout
   // ✅ Logout API + redirect
   const handleLogout = async () => {
-    await fetch("http://localhost:3002/auth/logout", {
+    await fetch("https://zerodha-clone-backend-gj61.onrender.com/auth/logout", {
       credentials: "include",
     });
 

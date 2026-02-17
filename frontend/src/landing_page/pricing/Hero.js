@@ -19,7 +19,7 @@ function Hero() {
         {/* Card 1 */}
         <div className="col-12 col-md-6 col-lg-4">
           <img
-            src="media/images/pricingEquity.svg"
+            src="/media/images/pricingEquity.svg"
             alt="Equity Delivery"
             className="img-fluid mb-3"
             style={{ maxWidth: "120px" }}
@@ -34,7 +34,7 @@ function Hero() {
         {/* Card 2 */}
         <div className="col-12 col-md-6 col-lg-4">
           <img
-            src="media/images/intradayTrades.svg"
+            src="/media/images/intradayTrades.svg"
             alt="Intraday Trades"
             className="img-fluid mb-3"
             style={{ maxWidth: "120px" }}
@@ -50,7 +50,7 @@ function Hero() {
         {/* Card 3 */}
         <div className="col-12 col-md-6 col-lg-4">
           <img
-            src="media/images/pricingEquity.svg"
+            src="/media/images/pricingEquity.svg"
             alt="Mutual Funds"
             className="img-fluid mb-3"
             style={{ maxWidth: "120px" }}

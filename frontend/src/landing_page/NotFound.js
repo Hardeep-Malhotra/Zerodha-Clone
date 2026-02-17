@@ -17,7 +17,7 @@ function NotFound() {
           </p>
         </div>
         <div className="col-6">
-          <img src="media/images/pageNotFound.png" alt="404 Image" className="img-fluid d-block mx-auto w-100"
+          <img src="/media/images/pageNotFound.png" alt="404 Image" className="img-fluid d-block mx-auto w-100"
   style={{ maxWidth: "420px" }} />
         </div>
       </div>

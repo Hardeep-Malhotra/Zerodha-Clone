@@ -1,11 +1,9 @@
-
 import React from "react";
 
 function Stats() {
   return (
     <div className="container-fluid px-3 px-lg-4">
       <div className="row align-items-center py-4 py-md-5">
-
         {/* LEFT CONTENT */}
         <div className="col-12 col-md-6 mb-4 mb-md-0">
           <h1 className="fs-2 mb-4">Trust with confidence</h1>
@@ -30,15 +28,16 @@ function Stats() {
 
           <h2 className="fs-5">Do better with money</h2>
           <p className="text-muted">
-            With initiatives like Nudge and Kill Switch, we don't just facilitate
-            transactions, but actively help you do better with your money.
+            With initiatives like Nudge and Kill Switch, we don't just
+            facilitate transactions, but actively help you do better with your
+            money.
           </p>
         </div>
 
         {/* RIGHT IMAGE */}
         <div className="col-12 col-md-6 text-center">
           <img
-            src="media/images/ecosystem.png"
+            src="/media/images/ecosystem.png"
             alt="Ecosystem"
             className="img-fluid mb-4"
             style={{ maxWidth: "480px" }}
@@ -53,7 +52,6 @@ function Stats() {
             </a>
           </div>
         </div>
-
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ function Hero() {
       {/* Image */}
       <div className="row justify-content-center">
         <img
-          src="media/images/homeHero.png"
+          src="/media/images/homeHero.png"
           alt="Hero"
           className="img-fluid mb-4"
           style={{ maxWidth: "900px" }}

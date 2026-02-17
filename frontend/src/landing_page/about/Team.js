@@ -1,23 +1,23 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 
 function Team() {
   return (
     <div className="container-fluid px-3 px-lg-4 my-5">
-
       {/* Heading */}
       <div className="row mb-4">
         <h1 className="text-center text-muted">People</h1>
       </div>
 
       {/* Content */}
-      <div className="row align-items-center text-muted" style={{ fontSize: "1.05em" }}>
-
+      <div
+        className="row align-items-center text-muted"
+        style={{ fontSize: "1.05em" }}
+      >
         {/* LEFT IMAGE */}
         <div className="col-12 col-md-6 text-center mb-4 mb-md-0">
           <img
-            src="media/images/nithinKamath.jpg"
+            src="/media/images/nithinKamath.jpg"
             alt="Nithin Kamath"
             className="rounded-circle img-fluid"
             style={{ maxWidth: "260px" }}
@@ -35,15 +35,19 @@ function Team() {
           </p>
 
           <p>
-            He is a member of the SEBI Secondary Market Advisory Committee (SMAC)
-            and the Market Data Advisory Committee (MDAC).
+            He is a member of the SEBI Secondary Market Advisory Committee
+            (SMAC) and the Market Data Advisory Committee (MDAC).
           </p>
 
           <p>Playing basketball is his zen.</p>
 
           <p>
             Connect on{" "}
-            <Link to="/" className="text-decoration-none" style={{ color: "#387ed1" }}>
+            <Link
+              to="/"
+              className="text-decoration-none"
+              style={{ color: "#387ed1" }}
+            >
               Homepage
             </Link>{" "}
             /{" "}
@@ -68,7 +72,6 @@ function Team() {
             </a>
           </p>
         </div>
-
       </div>
     </div>
   );

@@ -21,13 +21,13 @@ function Signup() {
   };
 
   // Handle form submit
-
+  // http://localhost:3002/auth/signup
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const res = await axios.post(
-        "http://localhost:3002/auth/signup",
+        "https://zerodha-clone-backend-gj61.onrender.com/auth/signup",
         formData,
       );
 
@@ -36,9 +36,10 @@ function Signup() {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("username", res.data.username);
         localStorage.setItem("email", res.data.email);
-
+        // http://localhost:3001
         // ✅ Redirect to Dashboard
-        window.location.href = "http://localhost:3001";
+        window.location.href =
+          "https://zerodha-clone-dashboard-4d4k.onrender.com";
       } else {
         alert(res.data.message);
       }

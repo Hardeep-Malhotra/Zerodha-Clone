@@ -17,22 +17,26 @@ function Login() {
       [name]: value,
     });
   };
-
+  // http://localhost:3002/auth/login
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:3002/auth/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://zerodha-clone-backend-gj61.onrender.com/auth/login",
+        {
+          email,
+          password,
+        },
+      );
 
       if (res.data.success) {
         // ✅ Store session
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("username", res.data.username);
         localStorage.setItem("email", email);
-
+        // http://localhost:3001
         // ✅ Redirect to Dashboard (important fix)
-        window.location.href = "http://localhost:3001";
+        window.location.href =
+          "https://zerodha-clone-dashboard-4d4k.onrender.com";
       } else {
         alert(res.data.message);
       }

@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -20,10 +19,16 @@ const app = express();
 // ---- Middlewares ----
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"], 
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "https://zerodha-clone-frontend-9mr9.onrender.com",
+      "https://zerodha-clone-dashboard-4d4k.onrender.com",
+    ],
     credentials: true,
   }),
 );
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 
